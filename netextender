@@ -2,7 +2,7 @@
 
 spawn "netExtender" -u $env(VPN_USER) -d $env(VPN_DOMAIN) -s $env(VPN_SERVER)
 
-set timeout 5
+set timeout 20
 
 expect "User Access Authentication"
 expect "Password:"
@@ -16,7 +16,7 @@ expect -exact "Do you want to proceed? (Y:Yes, N:No, V:View Certificate)" {
 expect {
   "NetExtender connected successfully." {
   } timeout {
-    send_user -- "Failed to bring tunnel up after 5"
+    send_user -- "Failed to bring tunnel up after 20 seconds"
     exit 1
   }
 }
